@@ -15,7 +15,6 @@
       --text: #e8e8e8;
       --muted: #888;
       --accent-amber: #c8a96e;
-      --accent-silver: #b0b8c8;
     }
 
     html { scroll-behavior: smooth; }
@@ -31,14 +30,23 @@
       align-items: center;
     }
 
-    /* ── Hero ── */
+    body::before {
+      content: '';
+      position: fixed;
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(200,169,110,0.06) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
     .hero {
       width: 100%;
       max-width: 680px;
       padding: 96px 32px 64px;
-      display: flex;
-      flex-direction: column;
-      gap: 0;
     }
 
     .eyebrow {
@@ -55,22 +63,17 @@
       font-weight: 300;
       line-height: 1;
       letter-spacing: -0.02em;
-      color: var(--text);
     }
 
-    .name span {
-      color: var(--accent-amber);
-    }
+    .name span { color: var(--accent-amber); }
 
     .tagline {
       margin-top: 28px;
       font-size: 15px;
       color: var(--muted);
       line-height: 1.7;
-      max-width: 420px;
     }
 
-    /* ── Divider ── */
     .divider {
       width: 100%;
       max-width: 680px;
@@ -81,7 +84,7 @@
       border-top: 1px solid var(--border);
     }
 
-    /* ── Cards ── */
+    /* ── About cards ── */
     .cards {
       width: 100%;
       max-width: 680px;
@@ -98,30 +101,102 @@
       padding: 28px 24px;
       transition: border-color 0.2s;
     }
+    .card:hover { border-color: #444; }
 
-    .card:hover {
-      border-color: #444;
+    .card-icon { font-size: 24px; margin-bottom: 16px; }
+    .card-title { font-size: 14px; font-weight: 400; margin-bottom: 8px; }
+    .card-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+    /* ── Works ── */
+    .section-label {
+      width: 100%;
+      max-width: 680px;
+      padding: 40px 32px 20px;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
     }
 
-    .card-icon {
-      font-size: 24px;
-      margin-bottom: 16px;
+    .works {
+      width: 100%;
+      max-width: 680px;
+      padding: 0 32px 48px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
     }
 
-    .card-title {
-      font-size: 14px;
-      font-weight: 400;
+    .work-item {
+      aspect-ratio: 1;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: border-color 0.2s;
+    }
+    .work-item:hover { border-color: #444; }
+
+    .work-emoji { font-size: 32px; }
+    .work-label { font-size: 12px; color: var(--muted); }
+
+    /* ── Social ── */
+    .social {
+      width: 100%;
+      max-width: 680px;
+      padding: 0 32px 48px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .social-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 10px 18px;
+      font-size: 13px;
       color: var(--text);
-      margin-bottom: 8px;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .social-btn:hover {
+      border-color: var(--accent-amber);
+      color: var(--accent-amber);
+    }
+    .social-icon { font-size: 16px; }
+
+    /* ── Contact ── */
+    .contact {
+      width: 100%;
+      max-width: 680px;
+      padding: 0 32px 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
 
-    .card-desc {
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
       font-size: 13px;
       color: var(--muted);
-      line-height: 1.6;
     }
+    .contact-item a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+    .contact-item a:hover { color: var(--accent-amber); }
 
-    /* ── Signature line ── */
+    /* ── Signature ── */
     .signature {
       width: 100%;
       max-width: 680px;
@@ -130,37 +205,17 @@
       align-items: center;
       gap: 12px;
     }
-
     .sig-dot {
-      width: 6px;
-      height: 6px;
+      width: 6px; height: 6px;
       border-radius: 50%;
       background: var(--accent-amber);
       flex-shrink: 0;
     }
-
-    .sig-text {
-      font-size: 13px;
-      color: var(--muted);
-      font-style: italic;
-    }
-
-    /* ── Ambient glow ── */
-    body::before {
-      content: '';
-      position: fixed;
-      top: -200px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 600px;
-      height: 400px;
-      background: radial-gradient(ellipse, rgba(200,169,110,0.06) 0%, transparent 70%);
-      pointer-events: none;
-      z-index: 0;
-    }
+    .sig-text { font-size: 13px; color: var(--muted); font-style: italic; }
 
     @media (max-width: 480px) {
       .cards { grid-template-columns: 1fr; }
+      .works { grid-template-columns: repeat(2, 1fr); }
       .hero { padding: 72px 24px 48px; }
     }
   </style>
@@ -185,6 +240,52 @@
       <div class="card-icon">🍹</div>
       <div class="card-title">调饮</div>
       <div class="card-desc">从基酒到特调，每一杯都是对味觉的一次实验。</div>
+    </div>
+  </section>
+
+  <div class="divider"><hr></div>
+
+  <div class="section-label">作品展示</div>
+  <section class="works">
+    <div class="work-item">
+      <div class="work-emoji">🖼️</div>
+      <div class="work-label">作品 01</div>
+    </div>
+    <div class="work-item">
+      <div class="work-emoji">🖼️</div>
+      <div class="work-label">作品 02</div>
+    </div>
+    <div class="work-item">
+      <div class="work-emoji">🖼️</div>
+      <div class="work-label">作品 03</div>
+    </div>
+  </section>
+
+  <div class="divider"><hr></div>
+
+  <div class="section-label">社交平台</div>
+  <section class="social">
+    <a class="social-btn" href="https://weibo.com/u/-l_i_l-1998" target="_blank">
+      <span class="social-icon">📙</span> 微博
+    </a>
+    <a class="social-btn" href="https://xhslink.com/m/8qEcVk2bTC7" target="_blank">
+      <span class="social-icon">📕</span> 小红书
+    </a>
+    <a class="social-btn" href="https://www.instagram.com/xwz._.123456" target="_blank">
+      <span class="social-icon">📸</span> Instagram
+    </a>
+    <a class="social-btn" href="https://x.com/Zero_123456_" target="_blank">
+      <span class="social-icon">𝕏</span> X
+    </a>
+  </section>
+
+  <div class="divider"><hr></div>
+
+  <div class="section-label">联系方式</div>
+  <section class="contact">
+    <div class="contact-item">
+      <span>✉️</span>
+      <a href="mailto:123456@wang.email.cn">123456@wang.email.cn</a>
     </div>
   </section>
 
